@@ -1,0 +1,38 @@
+.main-container{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.route-link{
+    margin-right: 30px;
+    color: blue;
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+a:active{
+    color: red;
+}
+
+.menu-btn{
+    width: 160px;
+    margin-left: 10px;
+    color: black;
+    background-color: blanchedalmond;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+
+    &:hover{
+        background-color: lightgray;
+    }
+
+    &.active{
+        background-color: gray;
+        color: white;
+    }
+}
+

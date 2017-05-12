@@ -1,0 +1,10 @@
+<div class="main-container">
+    <h1>Autologia Test</h1>
+    <h3 *ngIf='!showMenu'>Welcom, loading questions...</h3>
+    <nav *ngIf='showMenu'>
+        <a class='menu-btn' routerLink="/private" routerLinkActive="active">פרטי</a>
+        <a class='menu-btn' routerLink="/commercial" routerLinkActive="active">מסחרי</a>
+        <a class='menu-btn' routerLink="/suv" routerLinkActive="active">ג'יפ</a>
+    </nav>
+    <router-outlet></router-outlet>
+</div>

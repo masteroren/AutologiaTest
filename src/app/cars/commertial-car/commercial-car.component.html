@@ -1,0 +1,27 @@
+<div class="questions">
+    <ul class="questions-list">
+        <li *ngFor="let question of questions">
+            <div class="questions-wrapper">
+                <label class="question-item">
+                    <span>{{ question.NAME }}:</span>
+                </label>
+
+                <div>
+                    <ul class="answers-wrapper">
+                        <li class="answer-item" *ngFor="let answer of question.answers; let i = index;">
+                            <label>
+                                <div class="answer-btn" (click)="question.ANSWER = i; answer.SELECTED = i === question.selectedAnswer" [ngClass]="{selected: i === question.ANSWER}">
+                                    {{ answer.NAME}}
+                                </div>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <nav>
+        <button [routerLink]="['/results', 2]">חיפוש</button>
+    </nav>
+</div>
