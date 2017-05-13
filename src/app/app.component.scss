@@ -12,18 +12,18 @@
 }
 
 a:active{
-    color: red;
+    color: white;
 }
 
 .menu-btn{
-    width: 160px;
+    width: 300px;
     margin-left: 10px;
     color: black;
     background-color: blanchedalmond;
     border-radius: 10px;
     border: none;
     text-align: center;
-    padding: 5px;
+    padding: 10px;
     cursor: pointer;
 
     &:hover{

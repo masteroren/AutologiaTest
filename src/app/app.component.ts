@@ -11,28 +11,28 @@ import { actions } from '../store/reducer';
   styleUrls: ['./app.component.scss'],
   providers: [Store]
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent {
   private showMenu: boolean = false;
-  private unSubscriber: any;
+  // private unSubscriber: any;
 
   constructor(private store: Store) {
   }
 
-  ngOnInit() {
-    this.unSubscriber = this.store.subscribe(() => {
-      let questionsTypes = this.store.getState().questionsTypes;
-      if (questionsTypes) {
-        localStorage.setItem('questionsTypes', JSON.stringify(questionsTypes));
-      }
-      this.showMenu = true;
-    })
+  // ngOnInit() {
+  //   this.unSubscriber = this.store.subscribe(() => {
+  //     let questionsTypes = this.store.getState().questionsTypes;
+  //     if (questionsTypes) {
+  //       localStorage.setItem('questionsTypes', JSON.stringify(questionsTypes));
+  //     }
+  //     this.showMenu = true;
+  //   })
 
-    this.store.dispatch({
-      type: actions.INIT_QUESTIONS
-    })
-  }
+  //   this.store.dispatch({
+  //     type: actions.INIT_QUESTIONS
+  //   })
+  // }
 
-  ngOnDestroy() {
-    this.unSubscriber();
-  }
+  // ngOnDestroy() {
+  //   this.unSubscriber();
+  // }
 }

@@ -24,8 +24,8 @@ export const appRoutes: Routes = [
         path: 'suv',
         component: SuvCarComponent
     },
-    { 
-        path: 'results/:mainType', 
+    {
+        path: 'results/:mainType',
         component: ResultsComponent
     }
 ]

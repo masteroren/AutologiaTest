@@ -1,6 +1,6 @@
 import { actions } from './../../../store/reducer';
 import { Router } from '@angular/router';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Store } from '../../../store/store';
 
 @Component({
@@ -13,15 +13,27 @@ export class PrivateCarComponent implements OnInit, OnDestroy {
   private questions;
   private unSubscriber;
 
+  @Output() onQuestionsLoaded: EventEmitter<any> = new EventEmitter();
+
   constructor(private store: Store, private router: Router) {
   }
 
   ngOnInit() {
     console.log('Private car!');
-    this.getQuestions();
+    if (localStorage.getItem('questionsTypes')) {
+      this.getQuestionsFromLocalStorage();
+      this.onQuestionsLoaded.emit();
+    } else {
+      this.store.dispatch({
+        type: actions.INIT_QUESTIONS
+      })
+    }
 
     this.unSubscriber = this.store.subscribe(() => {
-      this.getQuestions();
+      this.questionsTypes = this.store.getState().questionsTypes;
+      localStorage.setItem('questionsTypes', JSON.stringify(this.questionsTypes));
+      this.questions = this.questionsTypes[0].list;
+      this.onQuestionsLoaded.emit();
     })
   }
 
@@ -30,10 +42,15 @@ export class PrivateCarComponent implements OnInit, OnDestroy {
     localStorage.setItem('questionsTypes', JSON.stringify(this.questionsTypes));
   }
 
-  getQuestions() {
-    if (localStorage.getItem('questionsTypes')) {
-      this.questionsTypes = JSON.parse(localStorage.getItem('questionsTypes'));
-      this.questions = this.questionsTypes[0].list;
-    }
+  getQuestionsFromLocalStorage() {
+    this.questionsTypes = JSON.parse(localStorage.getItem('questionsTypes'));
+    this.questions = this.questionsTypes[0].list;
+  }
+
+  resetSelection() {
+    localStorage.clear();
+    this.store.dispatch({
+      type: actions.INIT_QUESTIONS
+    })
   }
 }
