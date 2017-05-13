@@ -11,15 +11,17 @@
       <div class="spinner-text">מחפש רכבים מתאימים ...</div>
     </div>
   </div>
-  <ul *ngIf="cars.length > 0">
-    <li *ngFor="let item of cars">
-      <label>מספר: {{ item.id }}</label>
-      <label>יצרן: {{ item.manufactor_name }}</label>
-      <label>דגם: {{ item.car_model_name }}</label>
-      <label>תת דגם: {{ item.car_sub_model_name }}</label>
-      <label>שנה: {{ item.car_year_name }}</label>
-      <label>נקודות: {{ item.points }}</label>
-    </li>
-  </ul>
+  <div class="result-list">
+    <ul *ngIf="cars.length > 0">
+      <li *ngFor="let item of cars">
+        <label>מספר: {{ item.id }}</label>
+        <label>יצרן: {{ item.manufactor_name }}</label>
+        <label>דגם: {{ item.car_model_name }}</label>
+        <label>תת דגם: {{ item.car_sub_model_name }}</label>
+        <label>שנה: {{ item.car_year_name }}</label>
+        <label>נקודות: {{ item.points }}</label>
+      </li>
+    </ul>
+  </div>
   <div *ngIf="showError">No Results</div>
 </div>

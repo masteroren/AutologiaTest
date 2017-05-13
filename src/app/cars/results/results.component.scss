@@ -70,3 +70,9 @@ ul li label {
     -webkit-transform: scaleY(1.0);
   }
 }
+
+.result-list{
+  overflow-y: auto;
+  height: 400px;
+  margin-top: 20px;
+}
