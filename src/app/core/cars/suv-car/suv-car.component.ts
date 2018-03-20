@@ -1,5 +1,5 @@
 import { actions } from './../../../store/reducer';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { Store } from '../../../store/store';
 
 @Component({
@@ -11,6 +11,8 @@ export class SuvCarComponent implements OnInit, OnDestroy {
   private questionsTypes;
   private questions;
   private unSubscriber
+
+  @Output() onQuestionsLoaded: EventEmitter<any> = new EventEmitter();dddd
 
   constructor(private store: Store) {
   }

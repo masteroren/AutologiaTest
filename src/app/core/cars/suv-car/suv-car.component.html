@@ -11,7 +11,7 @@
                         <li class="answer-item" *ngFor="let answer of question.answers; let i = index;">
                             <label>
                                 <div class="answer-btn" (click)="question.ANSWER = i; answer.SELECTED = i === question.selectedAnswer" [ngClass]="{selected: i === question.ANSWER}">
-                                    {{ answer.NAME}}
+                                    {{ answer.NAME}} ({{answer.ID}})
                                 </div>
                             </label>
                         </li>
@@ -22,6 +22,6 @@
     </ul>
 
     <nav>
-        <button [routerLink]="['/results', 2]">חיפוש</button>
+        <button [routerLink]="['/results', 3]">חיפוש</button>
     </nav>
 </div>
